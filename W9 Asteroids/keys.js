@@ -28,5 +28,11 @@ function keyCode(keyChar) {
     return keyChar.charCodeAt(0);
 }
 
+window.addEventListener('keydown', function(e) {
+  if(e.keyCode == 32 && e.target == document.body) {
+    e.preventDefault();
+  }
+});
+
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("keyup", handleKeyup);
