@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>W7 Breakout</title>
+    <style type="text/css">
+        .body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .description span {
+          display: inline-block;
+          width: 30px;
+          height: 18px;
+        }
+
+        .message-container {
+            position: absolute;
+            right: 80px;
+        }
+
+        .description div span:nth-child(2) {
+            width: 150px;
+            margin-left: 10px;
+            height: 32px;
+        }
+    </style>
+  </head>
+  <body>
+
+
+    <div class="message-container">
+        <p id="message">Superman effect : </p>
+        <div class="description">powerups
+            <div><span style="background: #ad2b0a"></span><span>Superman effect</span></div>
+            <div><span style="background: #478c43"></span><span>Increase paddle size</span></div>
+            <div><span style="background: #ad6309"></span><span>Decrease paddle size</span></div>
+            <div><span style="background: #d0d3d8"></span><span>Increase ball speed</span></div>
+            <div><span style="background: #619da3"></span><span>Decrease ball speed</span></div>
+        </div>
+    </div>
+	<canvas id="myCanvas" width="960" height="640"
+		style="border: 1px solid black;">
+	Sorry, but your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+    <div class="f-description"></div>
+        <p>Use arrow keys to move the paddle and spacebar to fire the ball</p>
+        <br>
+        <p>- Powerups drops when a brick is destroyed</p>
+        <p>- There are 5 powerups. The powerups are generated randomly. A brick has 1/4 chance of having a power up</p>
+        <p>- Superman effect : Goes through bricks and smash every brick in its way, without bouncing back. This effect lasts for 6 seconds</p>
+        <p>- Increase paddle size : increases the paddle size by 20px</p>
+        <p>- Decrease paddle size : decreases the paddle size by 20px</p>
+        <p>- Incrase ball speed : increases the ball speed by 20%</p>
+        <p>- Decrease ball speed: decreases the ball speed by 20%</p>
+        <br>
+        <p>- There is a scoring system. For each brick destroyed 1 point is gained</p>
+        <p>- There is a game over detection. The game will be over when a player destroys all the bricks. The game will also end if a player loses all his life</p>
+        <p>- There is a trailing effect on the ball</p>
+
+    <div id="output"></div>
+
+    <script src="utils.js"></script>
+    <script src="g_keys.js"></script>
+    <script src="Paddle.js"></script>
+    <script src="g_ball.js"></script>
+    <script src="brick.js"></script>
+    <script src="powerup.js"></script>
+    <script src="g_main.js"></script>
+    <script src="update.js"></script>
+    <script src="render.js"></script>
+    <script src="PONG.js"></script>
+
+  </body>
+</html>
