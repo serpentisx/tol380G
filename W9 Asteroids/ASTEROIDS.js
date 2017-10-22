@@ -49,8 +49,8 @@ var g_ctx = g_canvas.getContext("2d");
 function createInitialShips() {
 
     entityManager.generateShip({
-        cx : 200,
-        cy : 200
+        cx : g_canvas.width / 2,
+        cy : g_canvas.height / 2
     });
     
 }
