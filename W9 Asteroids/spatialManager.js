@@ -18,55 +18,54 @@ e.g. general collision detection.
 
 var spatialManager = {
 
-// "PRIVATE" DATA
+    // "PRIVATE" DATA
 
-_nextSpatialID : 1, // make all valid IDs non-falsey (i.e. don't start at 0)
+    _nextSpatialID: 1, // make all valid IDs non-falsey (i.e. don't start at 0)
 
-_entities : [],
+    _entities: [],
 
-// "PRIVATE" METHODS
-//
-// <none yet>
+    // "PRIVATE" METHODS
+    //
+    // <none yet>
 
+    // PUBLIC METHODS
 
-// PUBLIC METHODS
+    getNewSpatialID: function() {
+    	return this._nextSpatialID++;
+    },
 
-getNewSpatialID : function() {
+    register: function(entity) {
+      	this._entities.push(entity);
+    },
 
-    // TODO: YOUR STUFF HERE!
+    unregister: function(entity) {
+        for (var i = 0; i < this._entities.length; i++) {
+          if (this._entities[i].getSpatialID() === entity.getSpatialID()) {
+            this._entities.splice(i, 1);
+            return;
+          }
+        }
+    },
 
-},
+    findEntityInRange : function(posX, posY, radius) {
+        for (var i = 0; i < this._entities.length; i++) {
+            var p = this._entities[i].getPos();
+            var ds = util.distSq(posX, posY, p.posX, p.posY) - (radius + this._entities[i].getRadius())**2;
+            if (ds <= 0) {
+                return this._entities[i];
+            }
+        }
+    },
 
-register: function(entity) {
-    var pos = entity.getPos();
-    var spatialID = entity.getSpatialID();
-    
-    // TODO: YOUR STUFF HERE!
+    render: function(ctx) {
+        var oldStyle = ctx.strokeStyle;
+        ctx.strokeStyle = "red";
 
-},
-
-unregister: function(entity) {
-    var spatialID = entity.getSpatialID();
-
-    // TODO: YOUR STUFF HERE!
-
-},
-
-findEntityInRange: function(posX, posY, radius) {
-
-    // TODO: YOUR STUFF HERE!
-
-},
-
-render: function(ctx) {
-    var oldStyle = ctx.strokeStyle;
-    ctx.strokeStyle = "red";
-    
-    for (var ID in this._entities) {
-        var e = this._entities[ID];
-        util.strokeCircle(ctx, e.posX, e.posY, e.radius);
+        for (var ID in this._entities) {
+            var e = this._entities[ID];
+            var pos = e.getPos();
+            util.strokeCircle(ctx, pos.posX, pos.posY, e.getRadius());
+        }
+        ctx.strokeStyle = oldStyle;
     }
-    ctx.strokeStyle = oldStyle;
-}
-
 }
