@@ -86,7 +86,7 @@ Stay within this 72 character margin, to keep your code easily readable
 // MARKING: 1 point
 //
 function abs(number) {
-  return numer > 0 ? number : -number;
+    return numer > 0 ? number : -number;
 }
 
 
@@ -99,7 +99,7 @@ function abs(number) {
 // MARKING: 1 point
 //
 function maxOfTwo(a, b) {
-  return a > b ? a : b;
+    return a > b ? a : b;
 }
 
 
@@ -111,11 +111,11 @@ function maxOfTwo(a, b) {
 // MARKING: 1 point
 //
 function maxOfThree(a, b, c) {
-	var max = a;
-  if (b > max) max = b;
-  if (c > max) max = c;
+    var max = a;
+    if (b > max) max = b;
+    if (c > max) max = c;
 
-  return max;
+    return max;
 }
 
 
@@ -128,10 +128,10 @@ function maxOfThree(a, b, c) {
 // MARKING: 2 points
 //
 function medOfThree(a, b, c) {
-	var max = maxOfThree(a, b, c);
-  if (a === max) return maxOfTwo(b, c);
-  if (b === max) return maxOfTwo(a, c);
-  if (c === max) return maxOfTwo(a, b);
+    var max = maxOfThree(a, b, c);
+    if (a === max) return maxOfTwo(b, c);
+    if (b === max) return maxOfTwo(a, c);
+    if (c === max) return maxOfTwo(a, b);
 }
 
 
@@ -151,18 +151,18 @@ function medOfThree(a, b, c) {
 // EXTRA:   try for efficiency (hint: sqrt without sqrt)
 //
 function isPrime(integer) {
-	if (integer < 2) {
- 		return false;
-  }
-
-  var i = 2;
-  while (i * i <= integer) {
-  	if (integer % i === 0) {
-    	return false;
+    if (integer < 2) {
+        return false;
     }
-    i++;
-  }
-  return true;
+
+    var i = 2;
+    while (i * i <= integer) {
+        if (integer % i === 0) {
+            return false;
+        }
+        i++;
+    }
+    return true;
 }
 
 
@@ -181,11 +181,11 @@ function isPrime(integer) {
 // MARKING: 2 point
 //
 function reverseString(str) {
-	var rev = "";
-  for (var i = str.length - 1; i >= 0; i--) {
-  	rev += str[i];
-  }
-  return rev;
+    var rev = "";
+    for (var i = str.length - 1; i >= 0; i--) {
+        rev += str[i];
+    }
+    return rev;
 }
 
 
@@ -201,13 +201,13 @@ function reverseString(str) {
 // MARKING: 1 point
 //
 function isPunct(chr) {
-	var p = [',','!','.',':',';','/','(',')'];
-  for (var i = 0;  i < p.length; i++) {
-  	if (chr === p[i]) {
-    	return true;
+    var p = [',', '!', '.', ':', ';', '/', '(', ')'];
+    for (var i = 0; i < p.length; i++) {
+        if (chr === p[i]) {
+            return true;
+        }
     }
-  }
-  return false;
+    return false;
 }
 
 
@@ -234,18 +234,19 @@ function isPunct(chr) {
 // MARKING: 3 points
 //
 function extractWords(str) {
-	var res = [], index = 0, u = 0;
+    var res = [],
+        index = 0,
+        u = 0;
 
-	for (var i = 0; i < str.length; i++) {
-  	if (!isPunct(str[i]) && str[i] !== ' ') {
-    	u++ ? res[index] += str[i] : res[index] = str[i];
+    for (var i = 0; i < str.length; i++) {
+        if (!isPunct(str[i]) && str[i] !== ' ') {
+            u++ ? res[index] += str[i]: res[index] = str[i];
+        } else {
+            if (u) index++;
+            u = 0;
+        }
     }
-    else {
-    	if (u) index++;
-      u = 0;
-    }
-  }
-  return res;
+    return res;
 }
 
 
@@ -282,13 +283,13 @@ function extractWords(str) {
 // MARKING: 2 points
 //
 function decodeMnemonic(str) {
-	var arr = extractWords(str);
-  var len = "";
+    var arr = extractWords(str);
+    var len = "";
 
-  for (var i = 0; i < arr.length; i++) {
-  	len += arr[i].length;
-  }
-  return len;
+    for (var i = 0; i < arr.length; i++) {
+        len += arr[i].length;
+    }
+    return len;
 }
 
 
@@ -297,18 +298,18 @@ function decodeMnemonic(str) {
 
 // Output to console, and to my special "output" element.
 function out( /* args */ ) {
-  var args = arguments;
-  console.log.apply(console, args);
+    var args = arguments;
+    console.log.apply(console, args);
 
-  var strs = [];
-  for (var i = 0; i < args.length; ++i) {
-    var thing = args[i];
-    if (typeof(thing) === "object") {
-      thing = JSON.stringify(thing);
+    var strs = [];
+    for (var i = 0; i < args.length; ++i) {
+        var thing = args[i];
+        if (typeof(thing) === "object") {
+            thing = JSON.stringify(thing);
+        }
+        strs.push(thing);
     }
-    strs.push(thing);
-  }
-  var line = strs.join(" ") + "<br/>";
+    var line = strs.join(" ") + "<br/>";
 
-  document.getElementById("output").innerHTML += line;
+    document.getElementById("output").innerHTML += line;
 }
